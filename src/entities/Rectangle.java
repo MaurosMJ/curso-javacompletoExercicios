@@ -1,48 +1,47 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entities;
 
-import entities.enums.Color;
+public class Rectangle {
 
-/**
- *
- * @author 320167484
- */
-public class Rectangle extends Shape {
+	private double width;
+	private double height;
 
-    private double width;
-    private double height;
-    
-    public Rectangle (Color color, double width, double height){
-        super(color);
-        this.width = width;
-        this.height = height;
-    }
-    
-    @Override
-    public double area (){
-        return this.getHeight()*this.getWidth();
-    }
+	public Rectangle(double width, double height) {
+		this.setHeight(height);
+		this.setWidth(width);
+	}
 
-    public double getWidth() {
-        return width;
-    }
+	public double Area() {
+		return (this.getWidth() * this.getHeight());
+	}
 
-    public void setWidth(double width) {
-        this.width = width;
-    }
+	public double Perimeter() {
+		return 2 * (this.getHeight() + this.getWidth());
+	}
 
-    public double getHeight() {
-        return height;
-    }
+	public double Diagonal() {
+		return Math.sqrt(Math.pow(this.getWidth(), 2) + Math.pow(this.getHeight(), 2));
+	}
 
-    public void setHeight(double height) {
-        this.height = height;
-    }
-    
-    
+	public String toString() {
+
+		return "AREA = " + this.Area() + "\n" + "PERIMETER = " + this.Perimeter() + "\n" + "DIAGONAL = "
+				+ this.Diagonal();
+	}
+
+	public double getWidth() {
+		return width;
+	}
+
+	public void setWidth(double width) {
+		this.width = width;
+	}
+
+	public double getHeight() {
+		return height;
+	}
+
+	public void setHeight(double height) {
+		this.height = height;
+	}
 
 }
