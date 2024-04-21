@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 import Utils.CurrencyConverter;
 import entities.Account;
+import entities.Account1;
 import entities.Circle;
 import entities.Client;
 import entities.Comment;
@@ -40,6 +41,8 @@ import entities.Worker;
 import entities.enums.Color;
 import entities.enums.OrderStatus;
 import entities.enums.WorkerLevel;
+import entities.exception.NotBalanceException;
+import entities.exception.WithdrawLimitException;
 
 public class Program {
 
@@ -51,7 +54,7 @@ public class Program {
 
 	public static void main(String[] args) throws ParseException {
 		Locale.setDefault(Locale.US);
-		ex21();
+		ex22();
 	}
 
 	private static void ex1() {
@@ -673,7 +676,7 @@ public class Program {
 	}
 
 	private static void ex21() {
-		
+
 		List<Shape> list = new ArrayList<>();
 
 		System.out.print("Enter the number of shapes: ");
@@ -705,6 +708,32 @@ public class Program {
 
 		for (Shape c : list) {
 			System.out.println(String.format("%.2f", c.area()));
+		}
+	}
+
+	private static void ex22() {
+
+		System.out.println("Enter account data:");
+		System.out.print("Number: ");
+		int num = input.nextInt();
+		System.out.print("Holder: ");
+		input.nextLine();
+		String holder = input.nextLine();
+		System.out.print("Initial balance: ");
+		double balance = input.nextDouble();
+		System.out.print("Withdraw limit: ");
+		double limit = input.nextDouble();
+		Account1 acc = new Account1(num, holder, balance, limit);
+		System.out.print("Enter amount for withdraw: ");
+		double withdraw = input.nextDouble();
+
+		try {
+			acc.withdraw(withdraw);
+			System.out.println(acc);
+		} catch (WithdrawLimitException e) {
+			System.out.println(e.getMessage());
+		} catch (NotBalanceException e) {
+			System.out.println(e.getMessage());
 		}
 	}
 }
