@@ -1,3 +1,8 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -31,6 +36,7 @@ import entities.Pessoa;
 import entities.Post;
 import entities.Product;
 import entities.Product1;
+import entities.Product2;
 import entities.Rectangle;
 import entities.Rectangle1;
 import entities.Shape;
@@ -54,7 +60,7 @@ public class Program {
 
 	public static void main(String[] args) throws ParseException {
 		Locale.setDefault(Locale.US);
-		ex22();
+		ex23();
 	}
 
 	private static void ex1() {
@@ -734,6 +740,40 @@ public class Program {
 			System.out.println(e.getMessage());
 		} catch (NotBalanceException e) {
 			System.out.println(e.getMessage());
+		}
+	}
+
+	private static void ex23() {
+
+		String inPath = "C:\\Users\\Mauros\\Documents\\in\\source.csv";
+		String outPath = "C:\\Users\\Mauros\\Documents\\out\\out.csv";
+		String word;
+		List<Product2> lista = new ArrayList<>();
+
+		try (BufferedReader br = new BufferedReader(new FileReader(inPath))) {
+
+			word = br.readLine();
+
+			while (word != null) {
+
+				String[] field = word.split(",");
+				lista.add(new Product2(field[0], Double.parseDouble(field[1]), Integer.parseInt(field[2])));
+				word = br.readLine();
+			}
+
+		} catch (IOException e) {
+			System.out.println("Error: " + e.getMessage());
+		}
+
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(outPath))) {
+
+			for (Product2 c : lista) {
+				bw.write(c.toString());
+				bw.newLine();
+			}
+
+		} catch (IOException e) {
+			System.out.println("Error: " + e.getMessage());
 		}
 	}
 }
