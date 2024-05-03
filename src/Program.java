@@ -49,6 +49,10 @@ import entities.enums.OrderStatus;
 import entities.enums.WorkerLevel;
 import entities.exception.NotBalanceException;
 import entities.exception.WithdrawLimitException;
+import model.service.BrazilTaxService;
+import model.service.RentalService;
+import models.entities.CarRental;
+import models.entities.Vehicle;
 
 public class Program {
 
@@ -60,7 +64,7 @@ public class Program {
 
 	public static void main(String[] args) throws ParseException {
 		Locale.setDefault(Locale.US);
-		ex23();
+		ex24();
 	}
 
 	private static void ex1() {
@@ -775,5 +779,31 @@ public class Program {
 		} catch (IOException e) {
 			System.out.println("Error: " + e.getMessage());
 		}
+	}
+
+	private static void ex24() {
+
+		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+
+		System.out.println("Entre com os dados do aluguel");
+		System.out.print("Modelo do carro: ");
+		String model = input.nextLine();
+		System.out.print("Retirada (dd/MM/yyyy hh:mm): ");
+		LocalDateTime start = LocalDateTime.parse(input.nextLine(), fmt);
+		System.out.print("Retorno (dd/MM/yyyy hh:mm): ");
+		LocalDateTime finish = LocalDateTime.parse(input.nextLine(), fmt);
+		System.out.print("Entre com o preço por hora: ");
+		double priceHour = input.nextDouble();
+		System.out.print("Entre com o preço por dia: ");
+		double priceDay = input.nextDouble();
+		System.out.println("FATURA:");
+
+		CarRental carrental = new CarRental(start, finish, new Vehicle(model));
+		RentalService service = new RentalService(priceHour, priceDay, new BrazilTaxService ());
+		service.processInvoice(carrental);
+		
+		System.out.println("Pagamento Básico: " + String.format("%.2f", carrental.getInvoice().getBasicPayment()));
+		System.out.println("Imposto: " + String.format("%.2f", carrental.getInvoice().getTax()));
+		System.out.println("Pagamento Total: " + String.format("%.2f", carrental.getInvoice().totalPayment()));
 	}
 }
