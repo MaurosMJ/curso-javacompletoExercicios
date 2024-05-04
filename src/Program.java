@@ -50,8 +50,11 @@ import entities.enums.WorkerLevel;
 import entities.exception.NotBalanceException;
 import entities.exception.WithdrawLimitException;
 import model.service.BrazilTaxService;
+import model.service.ContractService;
+import model.service.PaypalService;
 import model.service.RentalService;
 import models.entities.CarRental;
+import models.entities.Contract;
 import models.entities.Vehicle;
 
 public class Program {
@@ -64,7 +67,7 @@ public class Program {
 
 	public static void main(String[] args) throws ParseException {
 		Locale.setDefault(Locale.US);
-		ex24();
+		ex25();
 	}
 
 	private static void ex1() {
@@ -799,11 +802,34 @@ public class Program {
 		System.out.println("FATURA:");
 
 		CarRental carrental = new CarRental(start, finish, new Vehicle(model));
-		RentalService service = new RentalService(priceHour, priceDay, new BrazilTaxService ());
+		RentalService service = new RentalService(priceHour, priceDay, new BrazilTaxService());
 		service.processInvoice(carrental);
-		
+
 		System.out.println("Pagamento Básico: " + String.format("%.2f", carrental.getInvoice().getBasicPayment()));
 		System.out.println("Imposto: " + String.format("%.2f", carrental.getInvoice().getTax()));
 		System.out.println("Pagamento Total: " + String.format("%.2f", carrental.getInvoice().totalPayment()));
+	}
+
+	private static void ex25() throws ParseException {
+
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+		System.out.println("Entre os dados do contrato:");
+		System.out.print("Numero: ");
+		int num = input.nextInt();
+		System.out.print("Data (dd/MM/yyyy): ");
+		LocalDate data = LocalDate.parse(input.next(), formatter);
+		System.out.print("Valor do contrato: ");
+		double contractValue = input.nextDouble();
+		System.out.print("Entre com o numero de parcelas: ");
+		int installments = input.nextInt();
+
+		System.out.println("Parcelas:");
+		ContractService service = new ContractService();
+		Contract Obj = new Contract(num, data, contractValue);
+		service.processContract(Obj, installments, new PaypalService());
+
+		System.out.println(Obj.toString());
+
 	}
 }
