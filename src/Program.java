@@ -11,9 +11,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.Set;
 
 import Utils.CurrencyConverter;
 import entities.Account;
@@ -27,6 +29,7 @@ import entities.Employee3;
 import entities.HourContract;
 import entities.ImportedProduct;
 import entities.LegalPerson;
+import entities.Logs;
 import entities.NaturalPerson;
 import entities.Order;
 import entities.OrderItem;
@@ -67,7 +70,7 @@ public class Program {
 
 	public static void main(String[] args) throws ParseException {
 		Locale.setDefault(Locale.US);
-		ex25();
+		ex27();
 	}
 
 	private static void ex1() {
@@ -831,5 +834,36 @@ public class Program {
 
 		System.out.println(Obj.toString());
 
+	}
+
+	private static void ex26() {
+		
+		// C:\\Users\\Mauros\\Documents\\in\\outputLog.txt
+		System.out.print("Enter file full path: ");
+		String inPath = input.next();
+		String word;
+		Set<Logs> lista = new LinkedHashSet<>();
+
+		try (BufferedReader br = new BufferedReader(new FileReader(inPath))) {
+
+			word = br.readLine();
+
+			while (word != null) {
+
+				String[] field = word.split(" ");
+				lista.add(new Logs(field[0], field[1]));
+				word = br.readLine();
+			}
+
+		} catch (IOException e) {
+			System.out.println("Error: " + e.getMessage());
+		}
+
+		System.out.println("Total Users: " + lista.size());
+	}
+	
+	private static void ex27() {
+		char c = 'D';
+		System.out.println((char) (c+1));
 	}
 }
