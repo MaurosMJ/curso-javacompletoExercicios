@@ -45,6 +45,7 @@ import entities.Rectangle1;
 import entities.Shape;
 import entities.Student;
 import entities.Student2;
+import entities.Student3;
 import entities.UsedProduct;
 import entities.Worker;
 import entities.enums.Color;
@@ -837,7 +838,7 @@ public class Program {
 	}
 
 	private static void ex26() {
-		
+
 		// C:\\Users\\Mauros\\Documents\\in\\outputLog.txt
 		System.out.print("Enter file full path: ");
 		String inPath = input.next();
@@ -861,9 +862,26 @@ public class Program {
 
 		System.out.println("Total Users: " + lista.size());
 	}
-	
+
 	private static void ex27() {
-		char c = 'D';
-		System.out.println((char) (c+1));
+		int contStudents = 0;
+		int contCourse = 0;
+		char courseID = 'A';
+		Set<Student3> lista = new LinkedHashSet<>();
+
+		while (contCourse < 3) {
+
+			System.out.print("How many students for course " + (char) (courseID + contCourse) + ": ");
+			contStudents = input.nextInt();
+
+			for (int c = 0; c < contStudents; c++) {
+				lista.add(new Student3(input.nextInt()));
+			}
+
+			contCourse++;
+		}
+
+		System.out.println("Total Students: " + lista.size());
+
 	}
 }
