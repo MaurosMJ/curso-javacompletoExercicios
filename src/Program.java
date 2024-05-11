@@ -11,15 +11,18 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
 import Utils.CurrencyConverter;
 import entities.Account;
 import entities.Account1;
+import entities.Candidate;
 import entities.Circle;
 import entities.Client;
 import entities.Comment;
@@ -47,6 +50,7 @@ import entities.Student;
 import entities.Student2;
 import entities.Student3;
 import entities.UsedProduct;
+import entities.VoteCount;
 import entities.Worker;
 import entities.enums.Color;
 import entities.enums.OrderStatus;
@@ -71,7 +75,7 @@ public class Program {
 
 	public static void main(String[] args) throws ParseException {
 		Locale.setDefault(Locale.US);
-		ex27();
+		ex28();
 	}
 
 	private static void ex1() {
@@ -882,6 +886,45 @@ public class Program {
 		}
 
 		System.out.println("Total Students: " + lista.size());
+
+	}
+
+	private static void ex28() {
+
+		// C:\\Users\\Mauros\\Documents\\in.txt
+		System.out.println("Enter file full path: ");
+	//	String inPath = input.next();
+		String inPath = "C:\\Users\\Mauros\\Documents\\in\\in.txt";
+		String word;
+		Map<String, VoteCount> lista = new HashMap<>();
+
+	    try (BufferedReader br = new BufferedReader(new FileReader(inPath))) {
+
+	        word = br.readLine();
+
+	        while (word != null) {
+
+	            String[] field = word.split(",");
+	            Candidate candidate = new Candidate(field[0]);
+	            int votes = Integer.parseInt(field[1]);
+
+	            if (lista.containsKey(candidate.getName())) {
+	                VoteCount existingVoteCount = lista.get(candidate.getName());
+	                existingVoteCount.refreshCount(votes);
+	            } else {
+	                lista.put(candidate.getName(), new VoteCount(candidate, votes));
+	            }
+
+	            word = br.readLine();
+	        }
+
+	    } catch (IOException e) {
+	        System.out.println("Error: " + e.getMessage());
+	    }
+
+		for (String k : lista.keySet()) {
+			System.out.println(k + ": " + lista.get(k));
+		}
 
 	}
 }
