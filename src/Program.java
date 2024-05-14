@@ -8,8 +8,10 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
@@ -18,6 +20,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import Utils.CurrencyConverter;
 import entities.Account;
@@ -29,6 +32,7 @@ import entities.Comment;
 import entities.Employee;
 import entities.Employee2;
 import entities.Employee3;
+import entities.Employee4;
 import entities.HourContract;
 import entities.ImportedProduct;
 import entities.LegalPerson;
@@ -75,7 +79,7 @@ public class Program {
 
 	public static void main(String[] args) throws ParseException {
 		Locale.setDefault(Locale.US);
-		ex28();
+		ex31();
 	}
 
 	private static void ex1() {
@@ -891,40 +895,143 @@ public class Program {
 
 	private static void ex28() {
 
-		// C:\\Users\\Mauros\\Documents\\in.txt
 		System.out.println("Enter file full path: ");
-	//	String inPath = input.next();
-		String inPath = "C:\\Users\\Mauros\\Documents\\in\\in.txt";
+		String inPath = input.next();
 		String word;
 		Map<String, VoteCount> lista = new HashMap<>();
 
-	    try (BufferedReader br = new BufferedReader(new FileReader(inPath))) {
+		try (BufferedReader br = new BufferedReader(new FileReader(inPath))) {
 
-	        word = br.readLine();
+			word = br.readLine();
 
-	        while (word != null) {
+			while (word != null) {
 
-	            String[] field = word.split(",");
-	            Candidate candidate = new Candidate(field[0]);
-	            int votes = Integer.parseInt(field[1]);
+				String[] field = word.split(",");
+				Candidate candidate = new Candidate(field[0]);
+				int votes = Integer.parseInt(field[1]);
 
-	            if (lista.containsKey(candidate.getName())) {
-	                VoteCount existingVoteCount = lista.get(candidate.getName());
-	                existingVoteCount.refreshCount(votes);
-	            } else {
-	                lista.put(candidate.getName(), new VoteCount(candidate, votes));
-	            }
+				if (lista.containsKey(candidate.getName())) {
+					VoteCount existingVoteCount = lista.get(candidate.getName());
+					existingVoteCount.refreshCount(votes);
+				} else {
+					lista.put(candidate.getName(), new VoteCount(candidate, votes));
+				}
 
-	            word = br.readLine();
-	        }
+				word = br.readLine();
+			}
 
-	    } catch (IOException e) {
-	        System.out.println("Error: " + e.getMessage());
-	    }
+		} catch (IOException e) {
+			System.out.println("Error: " + e.getMessage());
+		}
 
 		for (String k : lista.keySet()) {
 			System.out.println(k + ": " + lista.get(k));
 		}
+
+	}
+
+	private static void ex29() {
+
+		// Working with Threads
+
+		Thread clockThread = new Thread(() -> {
+			while (true) {
+				System.out.println("Relógio: " + LocalTime.now());
+				try {
+					Thread.sleep(1000); // Waits 1 second
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+
+		Thread inputThread = new Thread(() -> {
+			Scanner scanner = new Scanner(System.in);
+			System.out.println("Digite algo e pressione Enter:");
+			String userInput = scanner.nextLine();
+			System.out.println("Você digitou: " + userInput);
+			scanner.close();
+		});
+
+		clockThread.start();
+		inputThread.start();
+
+		try {
+			clockThread.join();
+			inputThread.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static void ex30() {
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.print("Enter full file path: ");
+		String path = sc.nextLine();
+
+		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+
+			List<Product> list = new ArrayList<>();
+
+			String line = br.readLine();
+			while (line != null) {
+				String[] fields = line.split(",");
+				list.add(new Product(fields[0], Double.parseDouble(fields[1])));
+				line = br.readLine();
+			}
+
+			double avg = list.stream().map(p -> p.getPrice()).reduce(0.0, (x, y) -> x + y) / list.size();
+
+			System.out.println("Average price: " + String.format("%.2f", avg));
+
+			Comparator<String> comp = (s1, s2) -> s1.toUpperCase().compareTo(s2.toUpperCase());
+
+			List<String> names = list.stream().filter(p -> p.getPrice() < avg).map(p -> p.getName())
+					.sorted(comp.reversed()).collect(Collectors.toList());
+
+			names.forEach(System.out::println);
+
+		} catch (IOException e) {
+			System.out.println("Error: " + e.getMessage());
+		}
+		sc.close();
+
+	}
+	
+	private static void ex31() {
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.print("Enter full file path: ");
+		String path = sc.nextLine();
+		System.out.print("Enter salary: ");
+		double salary = input.nextDouble();
+		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+
+			List<Employee4> list = new ArrayList<>();
+
+			String line = br.readLine();
+			while (line != null) {
+				String[] fields = line.split(",");
+				list.add(new Employee4(fields[0],fields[1],Double.parseDouble(fields[2])));
+				line = br.readLine();
+			}
+
+			double avg = list.stream().filter(p -> p.getName().charAt(0) == 'M').map(p -> p.getSalary()).reduce(0.0, (x, y) -> x + y);
+
+			Comparator<String> comp = (s1, s2) -> s1.toUpperCase().compareTo(s2.toUpperCase());
+
+			List<String> names = list.stream().filter(p -> p.getSalary() > salary).map(p -> p.getEmail())
+					.sorted(comp.reversed()).collect(Collectors.toList());
+			System.out.println("Email of people whose salary is more than "+String.format("%.2f",salary)+":");
+			names.forEach(System.out::println);
+			System.out.println("Sum of salary of people whose name starts with 'M': "+String.format("%.2f",avg));
+		} catch (IOException e) {
+			System.out.println("Error: " + e.getMessage());
+		}
+		sc.close();
 
 	}
 }
