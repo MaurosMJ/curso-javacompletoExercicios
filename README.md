@@ -34,37 +34,37 @@ Section 1 to 20.
 
 ## Exercises:
 
-- Exercise 1: Calculating the Area and Perimeter of a Rectangle
-- Exercise 2: Employee Registration and Salary Adjustment
-- Exercise 3: Student Registration and Average Calculation
-- Exercise 4: Currency Converter (USD to BRL)
-- Exercise 5: Bank Account Management
-- Exercise 6: Identifying Negative Numbers in an Array
-- Exercise 7: Calculating the Average and Sum of an Array of Numbers
-- Exercise 8: Registration of People and Calculation of Average Height
-- Exercise 9: Identifying Even Numbers in an Array
-- Exercise 10: Identifying the Highest Value in an Array
-- Exercise 11: Registering Rented Rooms
-- Exercise 12: Employee Registration with Salary Increase
-- Exercise 13: Searching and Viewing Positions in a Matrix
-- Exercise 14: Date Manipulation and Duration Calculation
-- Exercise 15: Registration of Worker and Their Contracts
-- Exercise 16: Counting Words and Letters
-- Exercise 17: Calculating Area and Perimeter of a Circle
-- Exercise 18: Multiplication Table of a Number
-- Exercise 19: Calculating Factorial of a Number
-- Exercise 20: Checking if a Number is Prime
-- Exercise 21: Calculating Weighted Average
-- Exercise 22: Converting Celsius to Fahrenheit
-- Exercise 23: Converting Fahrenheit to Celsius
-- Exercise 24: Calculating Sum of Numbers in a Range
-- Exercise 25: Counting Characters in a String
-- Exercise 26: Reversing a String
-- Exercise 27: Counting Vowels in a String
-- Exercise 28: Checking Palindrome
-- Exercise 29: Sorting an Array
-- Exercise 30: Finding the Highest and Lowest Value in an Array
-- Exercise 31: Calculating Average of Values in an Array
+- [Exercise 1: Calculating the Area and Perimeter of a Rectangle](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 2: Employee Registration and Salary Adjustment](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 3: Student Registration and Average Calculation](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 4: Currency Converter (USD to BRL)](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 5: Bank Account Management](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 6: Identifying Negative Numbers in an Array](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 7: Calculating the Average and Sum of an Array of Numbers](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 8: Registration of People and Calculation of Average Height](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 9: Identifying Even Numbers in an Array](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 10: Identifying the Highest Value in an Array](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 11: Registering Rented Rooms](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 12: Employee Registration with Salary Increase](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 13: Searching and Viewing Positions in a Matrix](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 14: Date Manipulation and Duration Calculation](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 15: Registration of Worker and Their Contracts](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 16: Counting Words and Letters](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 17: Calculating Area and Perimeter of a Circle](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 18: Multiplication Table of a Number](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 19: Calculating Factorial of a Number](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 20: Checking if a Number is Prime](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 21: Calculating Weighted Average](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 22: Converting Celsius to Fahrenheit](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 23: Converting Fahrenheit to Celsius](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 24: Calculating Sum of Numbers in a Range](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 25: Counting Characters in a String](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 26: Reversing a String](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 27: Counting Vowels in a String](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 28: Checking Palindrome](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 29: Sorting an Array](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 30: Finding the Highest and Lowest Value in an Array](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
+- [Exercise 31: Calculating Average of Values in an Array](https://github.com/MaurosMJ/curso-javacompletoExercicios/blob/main/src/Program.java)
 
 ## Worknotes & Commits:
 
@@ -122,11 +122,11 @@ Checklist:
 * Classes created: VoteCount, Candidate
 * Methods created: ex28
 
-##### Worknote #10 - Exercise 29 and 31:
+##### Worknote #10 - Exercise 29, 30 and 31:
 Commit hash: [50a4e65882705cea73f6f68cd3a4d0823e650f38](https://github.com/MaurosMJ/curso-javacompletoExercicios/commit/50a4e65882705cea73f6f68cd3a4d0823e650f38)  
 Checklist:
-* Classes created:
-* Methods created: ex29
+* Classes created: Employee4
+* Methods created: ex29, ex30 and ex31 (WIP)
 
 ##### Worknote #11 - Exercise 31:
 Commit hash: [e4d6a9f42653c6570f853210b9d55a13c2c91ddb](https://github.com/MaurosMJ/curso-javacompletoExercicios/commit/e4d6a9f42653c6570f853210b9d55a13c2c91ddb)  
