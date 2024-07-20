@@ -1,4 +1,4 @@
-# curso-javacompletoSimpleJPA-APP
+# Curso Java completo programação orientada a objetos (Exercícios)
 
 ###### @Author: MaurosMJ
 <div style="text-align:center;">
@@ -134,6 +134,5 @@ Checklist:
 * Classes created: Employee4
 * Methods created: ex31
 
-# Credits:
-[@acenelio (Nelio Alves)](https://github.com/acenelio)  
-[@Me :)](https://github.com/MaurosMJ)
+## Credits:
+This repository is maintained by [MaurosMJ](https://github.com/MaurosMJ). The exercises are based on the 'Java First Steps: Programming Logic and Algorithms' course, with problems from URI Online Judge.
